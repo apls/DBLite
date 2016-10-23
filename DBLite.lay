@@ -1,0 +1,25 @@
+LAYOUT(DBLiteLayout, 340, 252)
+	ITEM(TabCtrl, tab, HSizePosZ(4, 4).VSizePosZ(28, 4))
+	ITEM(ToolBar, tb1, HSizePosZ(4, 4).TopPosZ(4, 15))
+END_LAYOUT
+
+LAYOUT(DbTabLayout, 340, 252)
+	ITEM(ArrayCtrl, dv___0, HSizePosZ(4, 208).VSizePosZ(8, 120))
+	ITEM(ArrayCtrl, dv___1, RightPosZ(10, 190).VSizePosZ(8, 120))
+	ITEM(LineEdit, dv___2, HSizePosZ(4, 8).BottomPosZ(8, 108))
+END_LAYOUT
+
+LAYOUT(TblTabLayout, 340, 252)
+	ITEM(ArrayCtrl, dv___0, HSizePosZ(4, 4).VSizePosZ(24, 4))
+	ITEM(DropList, dv___1, LeftPosZ(4, 64).TopPosZ(4, 19))
+END_LAYOUT
+
+LAYOUT(DatTabLayout, 340, 252)
+	ITEM(ArrayCtrl, dv___0, HSizePosZ(4, 4).VSizePosZ(24, 4))
+END_LAYOUT
+
+LAYOUT(QryTabLayout, 340, 252)
+	ITEM(LineEdit, dv___0, HSizePosZ(24, 4).TopPosZ(4, 48))
+	ITEM(ArrayCtrl, dv___1, HSizePosZ(4, 4).VSizePosZ(56, 4))
+END_LAYOUT
+
