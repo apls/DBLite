@@ -1,0 +1,2 @@
+# DBLite
+SQLite DB manager
