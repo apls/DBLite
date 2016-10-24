@@ -3,6 +3,7 @@
 
 #include <CtrlLib/CtrlLib.h>
 #include <CodeEditor/CodeEditor.h>
+#include <GridCtrl/GridCtrl.h>
 #include <plugin/sqlite3/lib/sqlite3.h>
 #include <plugin/sqlite3/Sqlite3.h>
 
@@ -59,6 +60,7 @@ struct TabTbl : public BaseTab {
 	SplitterFrame sf;
 	ArrayCtrl     ac;
 	CodeEditor    ce;
+	String        table;
 	DropList      tables;
 	
 
@@ -72,7 +74,8 @@ struct TabTbl : public BaseTab {
 };
 
 struct TabDat : public BaseTab {
-	ArrayCtrl     ac;
+	GridCtrl      gc;
+	String        table;
 	DropList      tables;
 
 	typedef TabDat CLASSNAME;
@@ -86,7 +89,7 @@ struct TabDat : public BaseTab {
 
 struct TabQry : public BaseTab {
 	SplitterFrame sf;
-	ArrayCtrl     ac;
+	GridCtrl      gc;
 	CodeEditor    ce;
 
 	typedef TabQry CLASSNAME;
@@ -96,6 +99,8 @@ struct TabQry : public BaseTab {
 	void OnOpen();
 	void OnClose();
 	void OnActive();
+	void OnLoad();
+	void DoQry();
 };
 
 class DBLite : public TopWindow {
@@ -126,6 +131,7 @@ public:
 	void MainBar(Bar& bar);
 	void MainMenu(Bar& bar);
 	void MenuFile(Bar& bar);
+	void MenuView(Bar& bar);
 	void MenuHelp(Bar& bar);
 	
 	void OpenFile(String& file);

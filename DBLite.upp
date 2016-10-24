@@ -3,7 +3,8 @@ description "SQLite manager\377";
 uses
 	CtrlLib,
 	plugin/sqlite3,
-	CodeEditor;
+	CodeEditor,
+	GridCtrl;
 
 file
 	tabDb.cpp,

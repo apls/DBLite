@@ -7,14 +7,16 @@
 TabQry::TabQry(Sqlite3Session& _db) : BaseTab(_db)
 {
 	AddFrame(sf.Top(ce, 200));
-	Add(ac.SizePos());
+	Add(gc.SizePos());
+	
+	ce.SetFont(::StdFont());
 }
 	
 void TabQry::MainBar(Bar& bar) 
 {
-	bar.Add("Query", DBLimg::DoQry(), THISBACK(OnActive))
+	bar.Add("Query", DBLimg::DoQry(), THISBACK(DoQry))
 	   .Help("Execute the Query");
-	bar.Add("Load", DBLimg::RdSQL(), THISBACK(OnActive))
+	bar.Add("Load", DBLimg::RdSQL(), THISBACK(OnLoad))
 	   .Help("Load SQL from file");
 }
 
@@ -24,8 +26,19 @@ void TabQry::OnOpen()
 
 void TabQry::OnClose() 
 {
+	gc.Clear();
+	ce.Clear();
 }
 
 void TabQry::OnActive() 
 {
+}
+
+void TabQry::OnLoad() 
+{
+}
+
+void TabQry::DoQry() 
+{
+	gc.Clear();
 }

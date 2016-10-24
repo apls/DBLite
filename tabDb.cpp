@@ -5,6 +5,7 @@
 
 
 
+
 struct MyDisplay : public Display {
 	virtual void Paint(Draw& w, const Rect& r, const Value& q,
 	                   Color ink, Color paper, dword style) const {
@@ -35,6 +36,8 @@ TabDB::TabDB(Sqlite3Session& _db) : BaseTab(_db)
 	db.WhenLeftDouble = THISBACK(OnView);
 	gc.AddColumn("Pragma");
 	gc.AddColumn("Value");
+
+	ce.SetFont(::StdFont());
 }
 	
 void TabDB::MainBar(Bar& bar) 

@@ -26,7 +26,7 @@ DBLite::DBLite(Sqlite3Session& _db) : db3(_db), tDB(_db), tTbl(_db), tDat(_db), 
 	
 	ClearFrames();
 	int r = HorzLayoutZoom(100);
-	int l = HorzLayoutZoom(80);
+	int l = HorzLayoutZoom(100);
 	mb.Transparent();
 	tb.SetFrame(NullFrame());
 	br.Add(mb.LeftPos(0, l).VCenterPos(mb.GetStdHeight()));
@@ -51,26 +51,37 @@ DBLite::DBLite(Sqlite3Session& _db) : db3(_db), tDB(_db), tTbl(_db), tDat(_db), 
 	
 	fs.Type("SQLite db file", "*.db *.db3 *.dat")
 		.AllFilesType().Multi(false);
+		
+	ce.SetFont(::StdFont());
 }
 
 void DBLite::MainMenu(Bar& bar)
 {
 	bar.Add("&File", THISBACK(MenuFile));
+	bar.Add("&View", THISBACK(MenuView));
 	bar.Add("&Help", THISBACK(MenuHelp));
 }
 
 void DBLite::MenuFile(Bar& bar)
 {
-	bar.Add("Open", THISBACK(Open));
+	bar.Add("Open", THISBACK(OnOpen));
+	bar.Add("New", THISBACK(OnNew));
 	bar.Separator();
 	bar.Add("Exit", THISBACK(OnLogs))
 		.Key(K_CTRL_E);
 }
 
+void DBLite::MenuView(Bar& bar)
+{
+	bar.Add("Log window", THISBACK(OnLogs))
+		.Check(ce.IsVisible());
+
+}
+
 void DBLite::MenuHelp(Bar& bar)
 {
 	bar.Add("About", THISBACK(OnLogs))
-		.Key(K_CTRL_E);
+		.Key(K_F1);
 }
 
 void DBLite::MainBar(Bar& bar)
